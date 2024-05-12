@@ -12,23 +12,28 @@ return {
     config = function()
         require("mason").setup()
 
-        local lsp_zero = require("lsp-zero")
+        -- local lsp_zero = require("lsp-zero")
 
-        lsp_zero.on_attach(function(client, bufnr)
-            lsp_zero.default_keymaps({ buffer = bufnr })
-        end)
+        -- lsp_zero.on_attach(function(client, bufnr)
+        --     lsp_zero.default_keymaps({ buffer = bufnr })
+        -- end)
 
         require("mason-lspconfig").setup({
             ensure_installed = { "lua_ls", "pyright", "clangd" },
             handlers = {
-                lsp_zero.default_setup,
+                -- lsp_zero.default_setup,
             },
         })
 
         local lspconfig = require("lspconfig")
 
         lspconfig.pyright.setup({})
-        lspconfig.clangd.setup({})
+        lspconfig.clangd.setup({
+            on_init = function(client)
+                vim.keymap.set('n', "<leader>%", ":ClangdSwitchSourceHeader<CR>", {silent=true})
+            end
+        })
+
         lspconfig.lua_ls.setup({
             settings = {
                 Lua = {
