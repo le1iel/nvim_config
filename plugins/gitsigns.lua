@@ -28,6 +28,7 @@ return {
                 end)
 
                 -- Actions
+                map("n", "<leader>gr", gitsigns.reset_hunk)
                 map("n", "<leader>gp", gitsigns.preview_hunk)
                 map("n", "<leader>gb", function()
                     gitsigns.blame_line({ full = true })

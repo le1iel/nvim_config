@@ -1,16 +1,16 @@
 local default_on_attach = function(client, buffnr)
     local opts = {
-        noremap = true,
-        buffer = true,
-        silent = true,
+        buffer = buffnr,
     }
 
     local builtin = require("telescope.builtin")
 
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     vim.keymap.set("n", "<leader>dd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "<leader>dD", vim.lsp.buf.declaration, opts)
+    vim.keymap.set("n", "<leader>di", vim.lsp.buf.implementation, opts)
     vim.keymap.set("n", "<leader>dr", builtin.lsp_references, opts)
-    vim.keymap.set("n", "<leader>df", builtin.quickfix, opts)
+    vim.keymap.set("n", "<leader>df", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 end
@@ -37,11 +37,12 @@ return {
             severity_sort = false,
         })
 
+        -- Gutter sings
         local signs = {
-            Error = "󰅚 ",
-            Warn = "󰀪 ",
-            Hint = "󰌶 ",
-            Info = " ",
+            Error = "E ",
+            Warn = "W ",
+            Hint = "H ",
+            Info = "I ",
         }
         for type, icon in pairs(signs) do
             local hl = "DiagnosticSign" .. type
@@ -50,17 +51,18 @@ return {
 
         -- Ensure some lsps are installed always
         require("mason-lspconfig").setup({
-            ensure_installed = { "lua_ls", "pyright", "clangd" },
+            ensure_installed = { "lua_ls", "pyright", "clangd", "rust_analyzer" },
         })
 
         local lspconfig = require("lspconfig")
 
         -- Language specific settings
         lspconfig.pyright.setup({ on_attach = default_on_attach })
+        lspconfig.rust_analyzer.setup({ on_attach = default_on_attach })
         lspconfig.clangd.setup({
             on_attach = function(client, buffernr)
                 default_on_attach(client, buffernr)
-                vim.keymap.set("n", "<leader>%", ":ClangdSwitchSourceHeader<CR>", { silent = true, buffer = true })
+                vim.keymap.set("n", "<leader>%", ":ClangdSwitchSourceHeader<CR>")
             end,
         })
 
