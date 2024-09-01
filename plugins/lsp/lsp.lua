@@ -2,11 +2,11 @@ local default_on_attach = function(_, _)
     local builtin = require("telescope.builtin")
 
     vim.keymap.set("n", "K", vim.lsp.buf.hover)
-    vim.keymap.set("n", "<leader>dd", vim.lsp.buf.definition)
-    vim.keymap.set("n", "<leader>dD", vim.lsp.buf.declaration)
-    vim.keymap.set("n", "<leader>di", vim.lsp.buf.implementation)
-    vim.keymap.set("n", "<leader>dr", builtin.lsp_references)
-    vim.keymap.set("n", "<leader>df", builtin.quickfix)
+    vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition)
+    vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration)
+    vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation)
+    vim.keymap.set("n", "<leader>gr", builtin.lsp_references)
+    vim.keymap.set("n", "<leader>gf", builtin.quickfix)
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 end
@@ -35,10 +35,10 @@ return {
 
         -- Gutter sings
         local signs = {
-            Error = "E ",
-            Warn = "W ",
-            Hint = "H ",
-            Info = "I ",
+            Error = " ",
+            Warn = " ",
+            Hint = " ",
+            Info = " ",
         }
         for type, icon in pairs(signs) do
             local hl = "DiagnosticSign" .. type
@@ -58,7 +58,7 @@ return {
         lspconfig.clangd.setup({
             on_attach = function(client, buffernr)
                 default_on_attach(client, buffernr)
-                vim.keymap.set("n", "<leader>%", ":ClangdSwitchSourceHeader<CR>")
+                vim.keymap.set("n", "<leader>%", ":ClangdSwitchSourceHeader<CR>", {silent=true})
             end,
         })
 
