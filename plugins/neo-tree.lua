@@ -6,6 +6,11 @@ return {
     "nvim-lua/plenary.nvim"},
 
     config = function()
-       vim.keymap.set("n", "<leader>fe", ":Neotree position=current<CR>", {silent=true})
+        require("neo-tree").setup({
+            filesystem= {
+                hijack_netrw_behavior = "open_current"
+            }
+        })
+       vim.keymap.set("n", "<leader>fe", ":Neotree position=float reveal_force_cwd<CR>", {silent=true})
     end
 }
