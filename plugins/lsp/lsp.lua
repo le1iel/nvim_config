@@ -6,7 +6,7 @@ local default_on_attach = function(_, _)
     vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration)
     vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation)
     vim.keymap.set("n", "<leader>gr", builtin.lsp_references)
-    vim.keymap.set("n", "<leader>gf", builtin.quickfix)
+    vim.keymap.set("n", "<leader>gf", vim.lsp.buf.code_action)
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 end
