@@ -11,5 +11,6 @@ return {
                 lualine_z = { "location" },
             },
         })
+        vim.keymap.set('n', '<F5>', function()require('lualine').refresh() end, {silent=true})
     end,
 }
