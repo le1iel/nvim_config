@@ -22,5 +22,5 @@ require("lazy").setup({
     { import = "nvim_config.plugins" },
     { import = "nvim_config.plugins.colourschemes" },
     { import = "nvim_config.plugins.lsp" },
-    { import = "nvim_config.plugins.dap" },
+    -- { import = "nvim_config.plugins.dap" },
 })
