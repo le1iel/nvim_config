@@ -11,6 +11,15 @@ return {
                 hijack_netrw_behavior = "open_current"
             }
         })
-       vim.keymap.set("n", "<leader>fe", ":Neotree position=float reveal_force_cwd<CR>", {silent=true})
+       vim.keymap.set("n", "<leader>fe", function()
+           require("neo-tree.command").execute({
+               action = "focus",
+               position = "float",
+               reveal_force_cwd=true,
+               source = "filesystem",
+               })
+           end
+       )
     end
+       -- ":Neotree position=float reveal_force_cwd<CR>", {silent=true})
 }
