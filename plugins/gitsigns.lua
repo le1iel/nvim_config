@@ -27,12 +27,12 @@ return {
                     end
                 end)
 
+                local builtin = require("telescope.builtin")
                 -- Actions
                 map("n", "<leader>fr", gitsigns.reset_hunk)
                 map("n", "<leader>fp", gitsigns.preview_hunk)
-                map("n", "<leader>fb", function()
-                    gitsigns.blame_line()
-                end)
+                map("n", "<leader>fb", gitsigns.blame_line)
+                map("n", "<leader>fB", builtin.git_branches)
             end,
         })
     end,
