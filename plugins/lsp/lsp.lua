@@ -53,12 +53,28 @@ return {
         local lspconfig = require("lspconfig")
 
         -- Language specific settings
-        lspconfig.pylsp.setup({ on_attach = default_on_attach })
+        lspconfig.pylsp.setup({
+            on_attach = default_on_attach,
+            -- formatter options
+            black = { enabled = true },
+            autopep8 = { enabled = false },
+            yapf = { enabled = false },
+            -- linter options
+            pylint = { enabled = true, executable = "pylint" },
+            pyflakes = { enabled = false },
+            pycodestyle = { enabled = false },
+            -- type checker
+            pylsp_mypy = { enabled = true },
+            -- auto-completion options
+            jedi_completion = { fuzzy = true },
+            -- import sorting
+            pyls_isort = { enabled = true },
+        })
         lspconfig.rust_analyzer.setup({ on_attach = default_on_attach })
         lspconfig.clangd.setup({
             on_attach = function(client, buffernr)
                 default_on_attach(client, buffernr)
-                vim.keymap.set("n", "<leader>%", ":ClangdSwitchSourceHeader<CR>", {silent=true})
+                vim.keymap.set("n", "<leader>%", ":ClangdSwitchSourceHeader<CR>", { silent = true })
             end,
         })
 

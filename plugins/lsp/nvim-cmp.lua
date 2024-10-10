@@ -13,9 +13,11 @@ return {
         "hrsh7th/cmp-path",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
+        "onsails/lspkind.nvim",
     },
     config = function()
         local cmp = require("cmp")
+        local lspkind = require("lspkind")
 
         cmp.setup({
             snippet = {
@@ -45,6 +47,21 @@ return {
             }, {
                 { name = "buffer", keyword_length = 5},
             }),
+            formatting = {
+                format = lspkind.cmp_format({
+                    mode = "symbol", -- show only symbol annotations
+                    maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+                    -- can also be a function to dynamically calculate max width such as
+                    -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
+                    ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+                    show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+                    menu = {
+                        buffer = "buf",
+                        nvim_lsp = "lsp",
+                        luasnip = "snp",
+                    }
+                }),
+            },
         })
 
         -- To use git you need to install the plugin petertriho/cmp-git and uncomment lines below

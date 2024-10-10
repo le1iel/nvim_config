@@ -21,5 +21,4 @@ return {
            end
        )
     end
-       -- ":Neotree position=float reveal_force_cwd<CR>", {silent=true})
 }
