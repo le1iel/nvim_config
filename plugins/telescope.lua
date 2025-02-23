@@ -16,5 +16,6 @@ return {
         vim.keymap.set("n", "<leader>lm", builtin.marks, opts)
         vim.keymap.set("n", "<leader>lb", builtin.buffers, opts)
         vim.keymap.set("n", "<leader>ss", builtin.spell_suggest, opts)
+        vim.keymap.set("n", "<leader>fh", builtin.current_buffer_fuzzy_find, opts)
     end,
 }

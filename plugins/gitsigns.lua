@@ -11,28 +11,28 @@ return {
                     vim.keymap.set(mode, l, r, opts)
                 end
                 -- Navigation
-                map("n", "]g", function()
+                map("n", "]f", function()
                     if vim.wo.diff then
-                        vim.cmd.normal({ "]g", bang = true })
+                        vim.cmd.normal({ "]f", bang = true })
                     else
                         gitsigns.next_hunk()
                     end
                 end)
 
-                map("n", "[g", function()
+                map("n", "[f", function()
                     if vim.wo.diff then
-                        vim.cmd.normal({ "[g", bang = true })
+                        vim.cmd.normal({ "[f", bang = true })
                     else
                         gitsigns.prev_hunk()
                     end
                 end)
 
+                local builtin = require("telescope.builtin")
                 -- Actions
-                map("n", "<leader>gr", gitsigns.reset_hunk)
-                map("n", "<leader>gp", gitsigns.preview_hunk)
-                map("n", "<leader>gb", function()
-                    gitsigns.blame_line({ full = true })
-                end)
+                map("n", "<leader>fr", gitsigns.reset_hunk)
+                map("n", "<leader>fp", gitsigns.preview_hunk)
+                map("n", "<leader>fb", gitsigns.blame_line)
+                map("n", "<leader>fB", builtin.git_branches)
             end,
         })
     end,
