@@ -20,4 +20,13 @@ return {
             conform.format()
         end)
     end,
+    keys = {
+        {
+            "<leader>pf",
+            function()
+                require("conform").format()
+            end,
+            desc = "Open neogit",
+        },
+    },
 }

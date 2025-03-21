@@ -11,8 +11,8 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
-        -- "L3MON4D3/LuaSnip",
-        -- "saadparwaiz1/cmp_luasnip",
+        "L3MON4D3/LuaSnip",
+        "saadparwaiz1/cmp_luasnip",
         "onsails/lspkind.nvim",
     },
     config = function()
@@ -20,11 +20,11 @@ return {
         local lspkind = require("lspkind")
 
         cmp.setup({
-            -- snippet = {
-            --     expand = function(args)
-            --         require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-            --     end,
-            -- },
+            snippet = {
+                expand = function(args)
+                    require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+                end,
+            },
             window = {
                 completion = cmp.config.window.bordered(),
                 documentation = cmp.config.window.bordered(),
@@ -42,7 +42,7 @@ return {
             }),
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
-                -- { name = "luasnip" },
+                { name = "luasnip" },
                 { name = "path", keyword_length = 5},
             }, {
                 { name = "buffer", keyword_length = 5},
@@ -58,7 +58,7 @@ return {
                     menu = {
                         buffer = "buf",
                         nvim_lsp = "lsp",
-                        -- luasnip = "snp",
+                        luasnip = "snp",
                     }
                 }),
             },
