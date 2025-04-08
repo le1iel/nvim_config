@@ -12,7 +12,7 @@ return {
             function()
                 require("neogit").open({ kind = "floating" })
             end,
-            desc = "Open neogit",
+            desc = "Open neogit.",
         },
     },
 }

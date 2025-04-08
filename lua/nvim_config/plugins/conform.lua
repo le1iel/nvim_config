@@ -26,7 +26,7 @@ return {
             function()
                 require("conform").format()
             end,
-            desc = "Open neogit",
+            desc = "Pretty format.",
         },
     },
 }

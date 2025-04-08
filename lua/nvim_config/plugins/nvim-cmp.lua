@@ -1,10 +1,3 @@
--- -- Set up lspconfig.
--- local capabilities = require("cmp_nvim_lsp").default_capabilities()
--- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
--- require("lspconfig")["<YOUR_LSP_SERVER>"].setup({
---     capabilities = capabilities,
--- })
---
 return {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -76,11 +69,11 @@ return {
         -- require("cmp_git").setup()
 
         -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-        cmp.setup.cmdline({ "/", "?" }, {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = {
-                { name = "buffer" },
-            },
-        })
+        -- cmp.setup.cmdline({ "/", "?" }, {
+        --     mapping = cmp.mapping.preset.cmdline(),
+        --     sources = {
+        --         { name = "buffer" },
+        --     },
+        -- })
     end,
 }
