@@ -52,7 +52,7 @@ return {
             },
 
             highlight_groups = {
-                -- Comment = { fg = "foam" },
+                Comment = { italic = true },
                 -- VertSplit = { fg = "muted", bg = "muted" },
             },
 
