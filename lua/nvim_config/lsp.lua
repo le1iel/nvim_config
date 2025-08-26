@@ -1,7 +1,7 @@
 -- Configs for window
 vim.diagnostic.config({
-    virtual_text = true,
-    virtual_line = true,
+    virtual_text = false,
+    virtual_lines = {current_line = true},
     signs = {
         text = {
             [vim.diagnostic.severity.ERROR] = " ",
@@ -14,10 +14,4 @@ vim.diagnostic.config({
     update_in_insert = false,
 })
 
-vim.lsp.config["neocmakelsp"] = {
-    cmd = { "neocmakelsp", "--stdio" },
-    filetypes = { "cmake" },
-    root_markers = { ".git" },
-}
-
-vim.lsp.enable({ "clangd", "luals", "neocmakelsp" })
+vim.lsp.enable({ "clangd", "luals", "pyright" })
