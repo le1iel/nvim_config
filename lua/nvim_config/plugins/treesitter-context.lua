@@ -6,6 +6,6 @@ return {
             max_lines = 5,
             trim_scope = "inner",
         })
-        vim.keymap.set("n", "<F8>", ":TSContextToggle<CR>", {silent=true})
+        vim.keymap.set("n", "<F8>", ":TSContextToggle<CR>", { silent = true })
     end,
 }

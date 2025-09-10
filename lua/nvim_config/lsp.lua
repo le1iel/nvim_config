@@ -14,4 +14,5 @@ vim.diagnostic.config({
     update_in_insert = false,
 })
 
-vim.lsp.enable({ "clangd", "luals", "pyright" })
+vim.lsp.enable({ "clangd", "luals", "pyright", "rust-analyzer" })
+vim.keymap.set("n", "<leader>pf", vim.lsp.buf.format, {silent = true, desc = "Run formatter"})
