@@ -52,7 +52,7 @@ return {
             },
 
             highlight_groups = {
-                -- Comment = { fg = "foam" },
+                Comment = { italic = true },
                 -- VertSplit = { fg = "muted", bg = "muted" },
             },
 
@@ -68,8 +68,6 @@ return {
                 -- end
             end,
         })
-
-        vim.cmd("colorscheme rose-pine-dawn")
     end,
     enabled = true,
 }

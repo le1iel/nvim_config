@@ -11,10 +11,6 @@ return {
             update_events = "TextChanged,TextChangedI",
         })
 
-        -- keymaps
-        vim.keymap.set({ "i" }, "<C-k>", function()
-            ls.expand()
-        end, { silent = true })
         vim.keymap.set({ "i", "s" }, "<C-L>", function()
             ls.jump(1)
         end, { silent = true })
@@ -28,7 +24,8 @@ return {
             end
         end, { silent = true })
 
-        require("luasnip.loaders.from_vscode").load({paths = "~/.config/snippets"})
+
+        require("luasnip.loaders.from_vscode").load({paths = vim.fn.expand("$HOME/.config/snippets")})
 
     end,
 }
