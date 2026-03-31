@@ -1,6 +1,7 @@
 vim.pack.add({{src = "https://github.com/nvim-mini/mini.nvim"}})
 
 require("mini.icons").setup()
+require("mini.notify").setup()
 require("mini.comment").setup()
 require("mini.cursorword").setup()
 require("mini.statusline").setup()
