@@ -29,3 +29,5 @@ vim.diagnostic.config({
 
 vim.cmd("set completeopt+=noselect")
 vim.keymap.set("n", "<leader>pf", vim.lsp.buf.format, { silent = true, desc = "Run formatter" })
+
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { noremap = true, silent = true })

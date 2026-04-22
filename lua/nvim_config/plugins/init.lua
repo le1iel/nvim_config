@@ -7,5 +7,6 @@ require("nvim_config.plugins.telescope")
 require("nvim_config.plugins.treesitter-context")
 require("nvim_config.plugins.treesitter")
 require("nvim_config.plugins.terminal")
+require("nvim_config.plugins.octo")
 
 require("nvim_config.plugins.colourschemes.rose-pine")
